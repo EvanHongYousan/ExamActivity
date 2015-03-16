@@ -1,5 +1,5 @@
 var cfg, common, ev, main, data, rightScore=0,//rightSelectedIndex, userSelectedIndex
-isAnalyse = false;
+    isAnalyse = false;
 cfg = {
     style : {
         // 正确错误的样式
@@ -189,22 +189,22 @@ main = {
             // 清除在答题解析里面头部和尾部的多余P标签
             var aDiv = $('.contentInfo .accordion div');
             aDiv.forEach(function(e) {
-                    try {
-                        var text = $(e).text().trim();
-                        if (text === "null" || text == "")
-                            $(e).closest(".accordion").hide();
-                    } catch (e) {
+                try {
+                    var text = $(e).text().trim();
+                    if (text === "null" || text == "")
+                        $(e).closest(".accordion").hide();
+                } catch (e) {
+                }
+                var aP = $(e).find('p');
+                for (var i = aP.length - 1; i >= 0; i--) {
+                    if (aP[i].innerHTML === ''
+                        || aP[i].innerHTML === '&nbsp;') {
+                        aP[i].style.display = 'none'
+                    } else {
+                        break;
                     }
-                    var aP = $(e).find('p');
-                    for (var i = aP.length - 1; i >= 0; i--) {
-                        if (aP[i].innerHTML === ''
-                            || aP[i].innerHTML === '&nbsp;') {
-                            aP[i].style.display = 'none'
-                        } else {
-                            break;
-                        }
-                    };
-                });
+                };
+            });
             aDiv
                 .forEach(function(e) {
                     var aP = $(e).find('p');
@@ -296,7 +296,7 @@ main = {
     },
 
     focusBlank:function(index){
-        if($(".questionType").attr("type")=="4"){ //questionType为4表明这是阅读理解题,则文章部分没有必要滑动
+        if($(".questionType").attr("type")=="4" || index >= $(".underline > span").length){ //questionType为4表明这是阅读理解题,则文章部分没有必要滑动
             return;
         }
         $(".underline > span").removeClass("Active").removeClass("activeMark");

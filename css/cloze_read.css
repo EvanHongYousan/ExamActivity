@@ -369,3 +369,24 @@ table{
 table td {
     line-height:15px;
 }
+
+
+/* Swipe 2 required styles */
+
+.swipe {
+    overflow: hidden;
+    visibility: hidden;
+    position: relative;
+    overflow-y: scroll;
+}
+.swipe-wrap {
+    overflow: hidden;
+    position: relative;
+}
+.swipe-wrap > div {
+    float:left;
+    width:100%;
+    position: relative;
+}
+
+/* END required styles */

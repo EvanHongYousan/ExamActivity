@@ -26,7 +26,7 @@ common = {
             all[i].className = '';
         }
         one.addClass(active);
-        $(".underline > span").eq($(".questions > section").not(".none").index()).attr("class","finished activeMark");
+        $(".underline > span").eq($(".questions > .swipe-wrap > div >section").index(one.parents('.content').parent())).attr("class","finished activeMark");
     },
     getUserAgent: function() {
         function isIOS() {
@@ -116,7 +116,7 @@ ev = {
             ;
             main.makeResult($(this), ev);
             setTimeout(function(){
-                $(_this).parents(".content").parent().triggerHandler("swipeLeft");
+                mySwipe.next();
             },500);
             //main.analysis();
         }
@@ -131,18 +131,19 @@ ev = {
         $("#submit").click(function(){
             main.analysis();
             $("article.page, .questions.page").hide();
-            $(".submitDiv").remove();
+            //$(".submitDiv").remove();
             $(".serialNumStrip").hide();
             $(".cheerDiv").show();
             $(".cheerDiv p").html("你答对了"+rightScore+"道题");
         });
         $("#showAnalysis").click(function(){
             $("article.page, .questions.page").show();
-            $("section.submitDiv").addClass("none");
+            //$("section.submitDiv").addClass("none");
             $(".serialNumStrip").show();
             $(".questions.page section").eq(0).removeClass("none");
-            $(".cheerDiv").addClass("none");
+            //$(".cheerDiv").addClass("none");
             main.focusBlank(0);
+            mySwipe.slide(0);
         });
     },
 
@@ -152,87 +153,28 @@ ev = {
         });
         $(".underline > span").click(function(){
             main.focusBlank($(".underline > span").index(this));
-            $(".questions > section").addClass("none");
-            $(".questions > section").eq($(".underline > span").index(this)).removeClass("none").css({
-                'opacity':'0'
-            }).animate({
-                'opacity':'1'
-            },500,'ease-out');
+            mySwipe.slide($(".underline > span").index(this),300);
         });
     },
-//    questionSwitch:function(){
-//        var moveStart= 0,moveEnd=0,distance=0;
-//        $(".questions > section").on("touchstart",function(e){
-//            moveStart=e.touches[0].clientX;
-//            moveEnd=moveStart;
-//        }).on("touchmove",function(e){
-//            moveEnd=e.touches[0].clientX;
-//            if(Math.abs(moveEnd-moveStart)<50){
-//                return;
-//            }
-//            $(this).css({
-//                "position":"relative",
-//                "left":(moveEnd-moveStart)+"px"
-//            });
-//        }).on("touchend",function(e){
-//            distance=moveEnd-moveStart;
-//            if(Math.abs(distance)>100){
-//                $(this).css({
-//                    'position':'static',
-//                    'left':'0'
-//                });
-//                if(distance>0){
-//                    if($(this).prev().length>0) {
-//                        $(this).addClass("none").prev().removeClass("none").css({
-//                            'opacity':'0'
-//                        }).animate({
-//                            'opacity':'1'
-//                        },500,'ease-out');
-//                        main.focusBlank($(".questions > section").index($(this).prev()[0]));
-//                    }
-//                }else{
-//                    if($(this).next().length>0) {
-//                        $(this).addClass("none").next().removeClass("none").css({
-//                            'opacity':'0'
-//                        }).animate({
-//                            'opacity':'1'
-//                        },500,'ease-out');
-//                        main.focusBlank($(".questions > section").index($(this).next()[0]));
-//                    }
-//                }
-//            }else{
-//                $(this).animate({
-//                    'left':'0'
-//                },200,'ease-out',function(){
-//                    //回调函数。animate方法没给回调函数传参数。
-//                });
-//            }
-//            moveStart=0;
-//            moveEnd=0;
-//        });
-//    }
-
     questionSwitch:function(){
-        $(".questions > section").on("swipeLeft",function(){
-            if($(this).next().length <= 0){
-                return;
-            }
-            $(this).addClass("none").next().removeClass("none").css({
-                'opacity':'0'
-            }).animate({
-                'opacity':'1'
-            },500,'ease-out');
-            main.focusBlank($(".questions > section").index($(this).next()[0]));
-        }).on("swipeRight",function(){
-            if($(this).prev().length <= 0){
-                return;
-            }
-            $(this).addClass("none").prev().removeClass("none").css({
-                'opacity':'0'
-            }).animate({
-                'opacity':'1'
-            },500,'ease-out');
-            main.focusBlank($(".questions > section").index($(this).prev()[0]));});
+        var elem = document.getElementById('mySwipe');
+        window.mySwipe = Swipe(elem, {
+            // startSlide: 4,
+            // auto: 3000,
+            // continuous: true,
+            // disableScroll: true,
+            // stopPropagation: true,
+            callback: function(index, element) {
+                main.focusBlank(index);
+                $(".swipe").scrollTo({
+                    endY: 0,
+                    duration: 0,
+                    callback: function() {
+                    }
+                });
+            },
+            transitionEnd: function(index, element) {}
+        });
     }
 
 };
@@ -316,7 +258,7 @@ main = {
 
     analysis : function() {
         isAnalyse=true;
-        $(".questions > section").each(function(){
+        $(".questions > .swipe-wrap > div >section").each(function(){
 
             var rightSelectedIndex=$(this).find('.answer ul li.right').index();
             var userSelectedIndex=$(this).find('.active').parents('li').index();
@@ -326,10 +268,10 @@ main = {
             if(userSelectedIndex == rightSelectedIndex && rightSelectedIndex != -1){
                 right = true;
                 rightScore++;
-                $(".underline > span").eq($(".questions > section").index(this)).attr("class","SelectRight")
+                $(".underline > span").eq($(".questions > .swipe-wrap > div >section").index(this)).attr("class","SelectRight")
             }else {
                 right = false;
-                $(".underline > span").eq($(".questions > section").index(this)).attr("class","SelectWrong")
+                $(".underline > span").eq($(".questions > .swipe-wrap > div >section").index(this)).attr("class","SelectWrong")
             }
 
             $(this).find(".answer li a").each(function(i, e) {

@@ -1,0 +1,13 @@
+table.edittable th, table.edittable td {
+    border: 1px solid #000;
+    line-height: 30px;
+    padding: 5px;
+    vertical-align: middle;
+    white-space: normal;
+    word-break: break-all;
+}
+table.edittable {
+    border-collapse: collapse;
+    margin: 2px;
+    text-align: center;
+}

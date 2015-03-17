@@ -274,7 +274,6 @@ main = {
                 $(e).closest('.accordion').remove();
             }
         });
-        $('.questionExplain').show();
     },
 
     //

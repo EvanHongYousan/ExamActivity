@@ -261,22 +261,6 @@ img{
     right:0px;
     cursor:pointer;
 }
-.questionExplain{
-	display:none;
-	background:#4cae68;
-	margin-top:8px;
-	height:40px;
-	width:110px;
-	border-bottom-right-radius:60px;
-	border-top-right-radius:60px;
-	box-shadow:0 1px 1px 1px #34954c;
-}
-.questionExplain span{
-	line-height:40px;
-	display:block;
-	padding-left:10px;
-	color:#fff;
-}
 .contentInfo{
     background:#fff;
 }

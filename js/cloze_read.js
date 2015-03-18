@@ -26,7 +26,7 @@ common = {
             all[i].className = '';
         }
         one.addClass(active);
-        $(".underline > span").eq($(".questions > .swipe-wrap > div >section").index(one.parents('.content').parent())).attr("class","finished activeMark");
+        $(".underline > span").eq($(".swipe > .swipe-wrap > div >section").index(one.parents('.content').parent())).attr("class","finished activeMark");
     },
     getUserAgent: function() {
         function isIOS() {
@@ -54,6 +54,10 @@ ev = {
     },
 
     initDownload : function() {
+        if(tools.isMomoClient()){
+            $(".download_info").hide();
+            return;
+        }
         var downloadUrl = 'http://dl.ztmomo.com/app/ztmomo/android/028/ztmomo.apk';
         if (common.getUserAgent() == 'weixin_ios') {
             downloadUrl = "http://a.app.qq.com/o/simple.jsp?pkgname=com.mainbo.uplus";
@@ -166,7 +170,7 @@ ev = {
             // stopPropagation: true,
             callback: function(index, element) {
                 main.focusBlank(index);
-                $(".swipe").scrollTo({
+                $(".questions").scrollTo({
                     endY: 0,
                     duration: 0,
                     callback: function() {
@@ -233,9 +237,9 @@ main = {
                 $.each(_this.obj, function(i, e) {
                     if (i == 0) {
                         return
-                    };
+                    }
                     //console.log(e.complete)
-                    if(e.complete)return _this.callback(e)
+                    if(e.complete)return _this.callback(e);
                     e.onload = function() {
                         _this.callback(e);
                     };
@@ -258,7 +262,7 @@ main = {
 
     analysis : function() {
         isAnalyse=true;
-        $(".questions > .swipe-wrap > div >section").each(function(){
+        $(".swipe > .swipe-wrap > div >section").each(function(){
 
             var rightSelectedIndex=$(this).find('.answer ul li.right').index();
             var userSelectedIndex=$(this).find('.active').parents('li').index();
@@ -268,10 +272,10 @@ main = {
             if(userSelectedIndex == rightSelectedIndex && rightSelectedIndex != -1){
                 right = true;
                 rightScore++;
-                $(".underline > span").eq($(".questions > .swipe-wrap > div >section").index(this)).attr("class","SelectRight")
+                $(".underline > span").eq($(".swipe > .swipe-wrap > div >section").index(this)).attr("class","SelectRight")
             }else {
                 right = false;
-                $(".underline > span").eq($(".questions > .swipe-wrap > div >section").index(this)).attr("class","SelectWrong")
+                $(".underline > span").eq($(".swipe > .swipe-wrap > div >section").index(this)).attr("class","SelectWrong")
             }
 
             $(this).find(".answer li a").each(function(i, e) {
@@ -344,4 +348,5 @@ main = {
 
 $(function(){
     main.load();
+    document.ontouchmove = function(e){ e.preventDefault(); };
 });

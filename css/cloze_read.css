@@ -118,6 +118,7 @@ body.night_style {
 
 .questions {
     height:45%;
+    overflow-y: scroll;
 }
 
 .question{
@@ -377,7 +378,6 @@ table td {
     overflow: hidden;
     visibility: hidden;
     position: relative;
-    overflow-y: scroll;
 }
 .swipe-wrap {
     overflow: hidden;

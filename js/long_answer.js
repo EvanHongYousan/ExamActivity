@@ -49,6 +49,10 @@ ev = {
     },
 
     initDownload : function() {
+        if(tools.isMomoClient()){
+            $(".download_info").hide();
+            return;
+        }
         var downloadUrl = 'http://dl.ztmomo.com/app/ztmomo/android/028/ztmomo.apk';
         if (common.getUserAgent() == 'weixin_ios') {
             downloadUrl = "http://a.app.qq.com/o/simple.jsp?pkgname=com.mainbo.uplus";

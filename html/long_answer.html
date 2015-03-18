@@ -6,11 +6,12 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <link type="text/css" rel="stylesheet" href="../css/long_answer.css" />
+    <link type="text/css" rel="stylesheet" href="../css/navbar.css" />
 
 </head>
 <body>
 <section id="page">
-    <div class="download_info">
+    <div class="download_info none">        <!--TODO 这地方记得把none去掉-->
         <div>
             <img src="../images/app_icon.png" class="icon" width="54" height="54"/>
             <div class="info_tittle">
@@ -25,6 +26,14 @@
                 </p>
             </div>
             <p class="download">下载安装</p>
+        </div>
+    </div>
+    <div class="navbar">
+        <span class="curQueNum">1</span><span>/</span>
+        <span class="queLen">4</span>
+        <div class="navBtn">
+            <span class="preQue">上一题</span>
+            <span class="nextQue">下一题</span>
         </div>
     </div>
     <section id="content">
@@ -79,6 +88,19 @@
 </section>
 
 <section id="mask"></section>
+<script>
+    var globaldata = {
+        curNum:1,
+        preQueURL:"single_choice.html",
+        nextQueURL:"cloze.html",
+        allURLs:[
+            "single_choice.html",
+            "long_answer.html",
+            "cloze.html",
+            "readingcomprehension.html"
+        ]
+    };
+</script>
 <script language="javascript" src="../js/zepto.min.js"></script>
 <script language="javascript" src="../js/tools.js"></script>
 <script language="javascript" src="../js/long_answer.js"></script>

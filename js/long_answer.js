@@ -241,7 +241,7 @@ main = {
         main.judge();
         main.rangeDom();
         ev.init();
-
+        navbar.init();
         main.resizeImg();
         ev.initImg();
         window.onload = function() {

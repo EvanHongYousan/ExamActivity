@@ -1,0 +1,12 @@
+.navbar{
+    padding:10px 5% 0 5%;
+}
+
+.navbar span.curQueNum{
+    color:#2ac99a;
+    font-size:20px;
+}
+
+.navbar div.navBtn {
+    float:right;
+}

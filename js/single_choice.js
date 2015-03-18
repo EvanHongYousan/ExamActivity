@@ -305,7 +305,7 @@ main = {
         main.rangeDom();
         main.showQuestion();
         ev.init();
-
+        navbar.init();
         main.resizeImg();
         main.resizeEqSymbol();
         ev.initImg();

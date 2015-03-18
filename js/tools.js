@@ -96,3 +96,20 @@ var tools = {
     }
 
 };
+
+var navbar = {
+    preQueCli:function(){
+        $(".navbar .preQue").click(function(){
+            location.href = globaldata.preQueURL;
+        });
+    },
+    nextQueCli:function(){
+        $(".navbar .nextQue").click(function(){
+            location.href = globaldata.nextQueURL;
+        });
+    },
+    init:function(){
+        navbar.preQueCli();
+        navbar.nextQueCli();
+    }
+};

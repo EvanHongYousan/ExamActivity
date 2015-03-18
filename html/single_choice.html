@@ -7,10 +7,11 @@
     <link type="text/css" rel="stylesheet" href="../css/single_choice.css" />
     <link type="text/css" rel="stylesheet" href="../css/math.css" />
     <link type="text/css" rel="stylesheet" href="../css/topic_gz.css" />
+    <link type="text/css" rel="stylesheet" href="../css/navbar.css" />
 </head>
 <body>
 <section id="page">
-    <div class="download_info">
+    <div class="download_info none">            <!--TODO 这地方记得把none去掉-->
         <div>
             <img src="../images/app_icon.png" class="icon" width="54" height="54"/>
             <div class="info_tittle">
@@ -27,11 +28,19 @@
             <p class="download">下载安装</p>
         </div>
     </div>
+    <div class="navbar">
+        <span class="curQueNum">1</span><span>/</span>
+        <span class="queLen">4</span>
+        <div class="navBtn">
+            <!--<span class="preQue">上一题</span>-->
+            <span class="nextQue">下一题</span>
+        </div>
+    </div>
     <div class="divider"></div>
     <section id="content">
         <div class="question">
             <div>
-                <span id="topic_header"></span><p><img src="http://ftp.ztmomo.com/upload/tiCool/mathematics/topics/20141104/adf6fe08531044bb9f6e5555cc902cc8/767f625f14554b2f9c33c4eb71e1a5cc.png" alt="image_gs" />=<u>&nbsp;&nbsp;&nbsp; </u></p><p>则上面问题正确答案的选项是（&nbsp;&nbsp;&nbsp; ）</p>
+                <span id="topic_header">1.</span><p><img src="http://ftp.ztmomo.com/upload/tiCool/mathematics/topics/20141104/adf6fe08531044bb9f6e5555cc902cc8/767f625f14554b2f9c33c4eb71e1a5cc.png" alt="image_gs" />=<u>&nbsp;&nbsp;&nbsp; </u></p><p>则上面问题正确答案的选项是（&nbsp;&nbsp;&nbsp; ）</p>
             </div>
         </div>
         <!---
@@ -117,6 +126,19 @@
 </section>
 
 <section id="mask"></section>
+<script>
+    var globaldata = {
+        curNum:1,
+        preQueURL:"",
+        nextQueURL:"long_answer.html",
+        allURLs:[
+            "single_choice.html",
+            "long_answer.html",
+            "cloze.html",
+            "readingcomprehension.html"
+        ]
+    };
+</script>
 <script language="javascript" src="../js/zepto.min.js"></script>
 <script language="javascript" src="../js/tools.js"></script>
 <script language="javascript" src="../js/single_choice.js"></script>

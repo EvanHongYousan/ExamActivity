@@ -5,28 +5,28 @@
     <title>完形填空</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
     <link type="text/css" rel="stylesheet" href="../css/cloze_read.css" />
+    <link type="text/css" rel="stylesheet" href="../css/navbar.css" />
 </head>
 
-<body style="padding:0px;">
-<article class="page">
+<body>
 
-    <div class="download_info">
-        <div>
-            <img src="../images/app_icon.png" class="icon" width="54" height="54"/>
-            <div class="info_tittle">
-                <p class="row1">真题馍馍</p>
-                <p class="row2">初高中学习神器</p>
-                <p class="row3">
-                    <span class="star-filled"></span>
-                    <span class="star-filled"></span>
-                    <span class="star-filled"></span>
-                    <span class="star-filled"></span>
-                    <span class="star-filled"></span>
-                </p>
-            </div>
-            <p class="download">下载安装</p>
-        </div>
+<div class="navbar">
+    <span class="preQue">上一题</span>
+    <div class="navBtn">
+        <span class="curQueNum">1</span><span>/</span><span class="queLen">4</span>
     </div>
+    <span class="nextQue">下一题</span>
+    <div style="clear:both;"></div>
+</div>
+<div class="serialCard">
+    <div>
+        <span class="selectright">1</span><span class="selectwrong">2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span>
+    </div>
+</div>
+
+<div class="mask"></div>
+
+<article class="page dwnlScler">
 
     <section class="content">
         <div class="question">
@@ -781,6 +781,21 @@
     <button id="showAnalysis">查看解析</button>
     <br/><span id="reload" style="display:none;">重做</span>
 </div>
+
+
+<script>
+    var globaldata = {
+        curNum:3,
+        preQueURL:"long_answer.html",
+        nextQueURL:"readingcomprehension.html",
+        allURLs:[
+            "single_choice.html",
+            "long_answer.html",
+            "cloze.html",
+            "readingcomprehension.html"
+        ]
+    };
+</script>
 
 <!--消除移动端点击事件那300ms的延迟-->
 <script language="javascript" src="../js/fastclick.min.js"></script>

@@ -1,12 +1,160 @@
+body{
+    padding-top:50px;
+}
+
+.download_info{
+    border-bottom: 1px solid #ccc;
+    height: 72px;
+    /*position:relative;*/
+    width:100%;
+    max-width:600px;
+    position:fixed;
+    top:-100px;
+    left:0;
+    z-index:10000;
+    background-color: white;
+}
+.download_info .icon {
+    margin: 9px 10px 0 10px;
+    line-height: 0;
+    font-size: 0;
+}
+.download_info .info_tittle{
+    display: inline-block;
+    margin: 7px 0 0 0;
+}
+
+.download_info .info_tittle p {
+    font-size:16px;
+}
+.download_info .info_tittle .row3{
+    line-height: 18px;
+    font-size: 14px;
+}
+.download_info .download{
+    text-align: center;
+    display: inline-block;
+    font-size:16px;
+    line-height: 30px;
+    color: #FFFFFF;
+    padding: 4px 10px;
+    background-color: #2ac99a;
+    text-decoration: none;
+    border-radius:4px;
+    float: right;
+    margin: 20px;
+}
+.download_info .download{
+    cursor:pointer;
+}
+.download_info .star-filled{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: url('../images/star.png') no-repeat;
+    background-size:20px 20px;
+    margin-bottom: -5px;
+    margin-right: 3px;
+}
+
 .navbar{
-    padding:10px 5% 0 5%;
+    background-color: white;
+    padding:10px 0;
+    color:#2ac99a;
+    border-bottom:1px solid #efefef;
+    width:100%;
+    max-width:600px;
+    /*height:35px;*/
+    position:fixed !important;
+    top:0;
+    z-index:12000;
+    text-align: center;
 }
 
 .navbar span.curQueNum{
-    color:#2ac99a;
     font-size:20px;
 }
 
 .navbar div.navBtn {
+    display:inline-block;
+    /*position:fixed;*/
+    /*top:10px;*/
+    /*left:50%;*/
+    transform:translateX(-50%);
+}
+
+.navbar .preQue, .navbar .nextQue{
+    border:1px solid #2ac99a;
+    border-radius: 5px;
+    padding:5px;
+}
+
+.navbar .preQue{
+    float:left;
+    margin-left:2.5%;
+}
+
+.navbar .nextQue{
     float:right;
+    margin-right:2.5%;
+}
+
+.serialCard{
+    max-width:560px;
+    position:fixed;
+    top:-900px;
+    padding:20px 0;
+    width:100%;
+    z-index:10000;
+    background-color: white;
+}
+
+.serialCard div{
+    width:90%;
+    margin:0 auto;
+}
+
+.serialCard span{
+    color:white;
+    margin:5px 2%;
+    background-color:#e1e1e1;
+    border-radius: 14px;
+    display:inline-block;
+    width:22px;
+    height:22px;
+    line-height: 22px;
+    text-align: center;
+}
+
+.serialCard span.active{
+    color:#49afdc;
+    background-color:#ffffff;
+    border: 1px solid #49afdc;
+}
+
+.serialCard span.finished{
+    color:#fff;
+    background-color:#65bee6;
+}
+
+.serialCard span.selectright{
+    color:#fff;
+    background-color:#4cae68;
+}
+
+.serialCard span.selectwrong{
+    color:#fff;
+    background-color:#f05836;
+}
+
+.mask{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background-color:black;
+    opacity:0;
+    z-index:1000;
 }

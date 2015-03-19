@@ -207,7 +207,7 @@ main = {
                     } else {
                         break;
                     }
-                };
+                }
             });
             aDiv
                 .forEach(function(e) {
@@ -230,7 +230,6 @@ main = {
             this.obj = aObj;
             this.callback = callback;
         }
-        ;
         Img.prototype = {
             loadImg : function() {
                 var _this = this;
@@ -338,15 +337,12 @@ main = {
         }
 
         ev.init();
-
+        navbar.init();
         main.resizeImg();
         ev.initImg();
-        window.onload = function() {
-        };
     }
 };
 
 $(function(){
     main.load();
-    document.ontouchmove = function(e){ e.preventDefault(); };
 });

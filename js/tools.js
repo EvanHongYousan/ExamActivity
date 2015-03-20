@@ -148,6 +148,7 @@ var navbar = (function(){
         },
         nextQueEv:function(){
             $(".navbar .nextQue").click(function(){
+                alert("nextQue");
                 if(globaldata.nextQueURL == ""){
                     location.href = "end.html"
                 }else{

@@ -149,7 +149,8 @@ ev = {
             main.focusBlank(0);
             mySwipe.slide(0);
             $("#submit").unbind("click").html("下一题").click(function(){
-                $(".nextQue").click();
+                alert("submit");
+                $(".navbar .nextQue").click();
             }).prev().remove();
         });
     },
@@ -300,7 +301,7 @@ main = {
         });
         $('.answer li').unbind();
 
-
+        $(".serialCard span").eq(globaldata.curNum-1).addClass("selectright");
         var userLog = sessionStorage.getItem("userLog") ? JSON.parse(sessionStorage.getItem("userLog")) : [] ;
 
         userLog[globaldata.curNum] = {

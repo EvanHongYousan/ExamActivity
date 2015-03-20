@@ -148,6 +148,9 @@ ev = {
             //$(".cheerDiv").addClass("none");
             main.focusBlank(0);
             mySwipe.slide(0);
+            $("#submit").unbind("click").html("下一题").click(function(){
+                $(".nextQue").click();
+            }).prev().remove();
         });
     },
 
@@ -296,6 +299,17 @@ main = {
 
         });
         $('.answer li').unbind();
+
+
+        var userLog = sessionStorage.getItem("userLog") ? JSON.parse(sessionStorage.getItem("userLog")) : [] ;
+
+        userLog[globaldata.curNum] = {
+            "right" : true,
+            "rightScore" : rightScore,
+            "type":"cloze_read"
+        };
+
+        sessionStorage.setItem("userLog",JSON.stringify(userLog));
     },
 
     focusBlank:function(index){
@@ -323,6 +337,22 @@ main = {
             }
         });
     },
+    loadCache:function(){
+        if(sessionStorage.getItem("userLog")){
+
+            /*给答题卡里的序号上色 start*/
+            var userLog = JSON.parse(sessionStorage.getItem("userLog"));
+            for(var i = 1 ; i <= userLog.length && userLog[i] && userLog[i].right!=undefined ; i++){
+                if(userLog[i].right){
+                    $(".serialCard span").eq(i-1).addClass("selectright");
+                }
+                if(userLog[i].right == false){
+                    $(".serialCard span").eq(i-1).addClass("selectwrong");
+                }
+            }
+            /*给答题卡里的序号上色 end*/
+        }
+    },
 
     // 入口
     load : function() {
@@ -340,6 +370,7 @@ main = {
         navbar.init();
         main.resizeImg();
         ev.initImg();
+        main.loadCache();
     }
 };
 

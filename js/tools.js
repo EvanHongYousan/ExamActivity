@@ -148,7 +148,11 @@ var navbar = (function(){
         },
         nextQueEv:function(){
             $(".navbar .nextQue").click(function(){
-                location.href = globaldata.nextQueURL;
+                if(globaldata.nextQueURL == ""){
+                    location.href = "end.html"
+                }else{
+                    location.href = globaldata.nextQueURL;
+                }
             });
         },
         navBtnEv:function(){

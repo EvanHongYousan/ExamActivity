@@ -111,6 +111,16 @@ ev = {
             $(".contentInfo").removeClass("none");
             $(".showAnalysis").addClass("active");
             $(".showAnalysis p").text("题目解析");
+
+            $(".serialCard span").eq(globaldata.curNum-1).addClass("selectright");
+            var userLog = sessionStorage.getItem("userLog") ? JSON.parse(sessionStorage.getItem("userLog")) : [] ;
+
+            userLog[globaldata.curNum] = {
+                "right" : true,
+                "type" : "long_answer"
+            };
+
+            sessionStorage.setItem("userLog",JSON.stringify(userLog));
         });
     }
 
@@ -236,6 +246,26 @@ main = {
         });
         $('.questionExplain').show();
     },
+    loadCache:function(){
+        if(sessionStorage.getItem("userLog")){
+
+            /*给答题卡里的序号上色 start*/
+            var userLog = JSON.parse(sessionStorage.getItem("userLog"));
+            for(var i = 1 ; i <= userLog.length && userLog[i] && userLog[i].right!=undefined ; i++){
+                if(userLog[i].right){
+                    $(".serialCard span").eq(i-1).addClass("selectright");
+                }
+                if(userLog[i].right == false){
+                    $(".serialCard span").eq(i-1).addClass("selectwrong");
+                }
+            }
+            /*给答题卡里的序号上色 end*/
+
+            if(JSON.parse(sessionStorage.getItem("userLog"))[globaldata.curNum]){
+                $(".showAnalysis span").click();
+            }
+        }
+    },
     // 入口
     load : function() {
         main.judge();
@@ -244,7 +274,6 @@ main = {
         navbar.init();
         main.resizeImg();
         ev.initImg();
-        window.onload = function() {
-        };
+        main.loadCache();
     }
 };

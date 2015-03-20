@@ -89,20 +89,6 @@
             margin-bottom: -5px;
             margin-right: 3px;
         }
-        #activity_title{
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 5px;
-            font-size:1em;
-            color:#ea6200;
-        }
-        #begin_date{
-            position: relative;
-            margin: 10px auto ;
-            font-size: 0.8em;
-            color:#666666;
-            text-align: center;
-        }
         #contentX{
             width:90%;
             margin:0.1em auto 0.5em auto;
@@ -115,7 +101,7 @@
             max-width: 100%;
             vertical-align: middle;
         }
-        #start{
+        #shareBtn{
             text-align: center;
             width: 90%;
             margin:0 auto;
@@ -138,63 +124,50 @@
     </style>
 </head>
 <body>
-    <div class="download_info">
-        <div>
-            <img src="../images/app_icon.png" class="icon" width="54" height="54"/>
-            <div class="info_tittle">
-                <p class="row1">真题馍馍</p>
-                <p class="row2">初高中学习神器</p>
-                <p class="row3">
-                    <span class="star-filled"></span>
-                    <span class="star-filled"></span>
-                    <span class="star-filled"></span>
-                    <span class="star-filled"></span>
-                    <span class="star-filled"></span>
-                </p>
-            </div>
-            <p class="download">下载安装</p>
+<div class="download_info">
+    <div>
+        <img src="../images/app_icon.png" class="icon" width="54" height="54"/>
+        <div class="info_tittle">
+            <p class="row1">真题馍馍</p>
+            <p class="row2">初高中学习神器</p>
+            <p class="row3">
+                <span class="star-filled"></span>
+                <span class="star-filled"></span>
+                <span class="star-filled"></span>
+                <span class="star-filled"></span>
+                <span class="star-filled"></span>
+            </p>
         </div>
+        <p class="download">下载安装</p>
     </div>
-    <div id="activity_title">2014年北京数学中考试卷</div>
-    <div id="begin_date">
-        2014-09-25
-        浏览
-        <div id="pv" style="display:inline;"></div>
-    </div>
-    <div id="contentX">
-        <p style="text-align: center;"><img alt="image_gs" src="https://github.com/images/modules/dashboard/bootcamp/octocat_repo.png"></p>
-        <p>2014年北京数学中考试卷2014年北京数学中考试卷2014年北京数学中考试卷2014年北京数学中考试卷2014年北京数学中考试卷2014年北京数学中考试卷2014年北京数学中考试卷2014年北京数学中考试卷2014年北京数学中考试卷</p>
-    </div>
-    <div  id="start">
-        <button>开始答题</button>
-    </div>
-    <script src="../js/zepto.min.js"></script>
-    <script src="../js/tools.js"></script>
-    <script>
-        var startURL = 'single_choice.html'
+</div>
+<div id="contentX">
+    <p style="text-align: center;"><img alt="image_gs" src="https://github.com/images/modules/dashboard/bootcamp/octocat_repo.png"></p>
+    <p>做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦</p>
+</div>
+<div  id="shareBtn">
+    <button>分享出去</button>
+</div>
+<script src="../js/zepto.min.js"></script>
+<script src="../js/tools.js"></script>
+<script>
+    (function(){
         if(tools.isMomoClient()){
             $(".download_info").hide();
+            return;
         }
-        $("#start").click(function(){
-            location.href = startURL;
+        var downloadUrl = 'http://dl.ztmomo.com/app/ztmomo/android/028/ztmomo.apk';
+        if (tools.getUserAgent() == 'weixin_ios') {
+            downloadUrl = "http://a.app.qq.com/o/simple.jsp?pkgname=com.mainbo.uplus";
+        } else if (tools.getUserAgent() == 'ios') {
+            downloadUrl = 'https://itunes.apple.com/cn/app/zhen-ti-mo-mo/id899192770?l=zh&ls=1&mt=8';
+        } else if (tools.getUserAgent() == 'weixin') {
+            $(".download_info").before('<p style="text-align: center;color:#2ac99a;">请在【浏览器中打开】下载</p>');
+        }
+        $(".download").bind("click", function() {
+            window.location.href = downloadUrl;
         });
-        (function(){
-            if(tools.isMomoClient()){
-                $(".download_info").hide();
-                return;
-            }
-            var downloadUrl = 'http://dl.ztmomo.com/app/ztmomo/android/028/ztmomo.apk';
-            if (tools.getUserAgent() == 'weixin_ios') {
-                downloadUrl = "http://a.app.qq.com/o/simple.jsp?pkgname=com.mainbo.uplus";
-            } else if (tools.getUserAgent() == 'ios') {
-                downloadUrl = 'https://itunes.apple.com/cn/app/zhen-ti-mo-mo/id899192770?l=zh&ls=1&mt=8';
-            } else if (tools.getUserAgent() == 'weixin') {
-                $(".download_info").before('<p style="text-align: center;color:#2ac99a;">请在【浏览器中打开】下载</p>');
-            }
-            $(".download").bind("click", function() {
-                window.location.href = downloadUrl;
-            });
-        })();
-    </script>
+    })();
+</script>
 </body>
 </html>

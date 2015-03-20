@@ -77,12 +77,10 @@ ev = {
                 if (imgFile.indexOf('file://') == 0) {
                     imgFile = imgFile.substr('file://'.length);
                 }
-                ;
 
                 if (imgFile.indexOf('?')) {
                     imgFile = imgFile.split('?')[0]
                 }
-                ;
                 // 防止快速重复点击img
                 this.show = 1;
                 main.opt&&main.opt.zoomImg&&main.opt.zoomImg(imgFile);
@@ -278,6 +276,19 @@ main = {
                 $(e).closest('.accordion').remove();
             }
         });
+
+        $(".serialCard span").eq(globaldata.curNum-1).addClass(right?"selectright":"selectwrong");
+
+        var userLog = sessionStorage.getItem("userLog") ? JSON.parse(sessionStorage.getItem("userLog")) : [] ;
+
+        userLog[globaldata.curNum] = {
+            "right" : right,
+            "userSelectedIndex" : userSelectedIndex,
+            "rightSelectedIndex" : rightSelectedIndex,
+            "type":"single_choice"
+        };
+
+        sessionStorage.setItem("userLog",JSON.stringify(userLog));
     },
 
     //
@@ -296,7 +307,30 @@ main = {
             ;
         } catch (e) {
         }
-        ;
+    },
+    loadCache:function(){
+        if(sessionStorage.getItem("userLog")){
+
+            /*给答题卡里的序号上色 start*/
+            var userLog = JSON.parse(sessionStorage.getItem("userLog"));
+            for(var i = 1 ; i <= userLog.length && userLog[i] && userLog[i].right!=undefined ; i++){
+                if(userLog[i].right){
+                    $(".serialCard span").eq(i-1).addClass("selectright");
+                }
+                if(userLog[i].right == false){
+                    $(".serialCard span").eq(i-1).addClass("selectwrong");
+                }
+            }
+            /*给答题卡里的序号上色 end*/
+
+            if(JSON.parse(sessionStorage.getItem("userLog"))[globaldata.curNum]){
+                var thisQueLog = JSON.parse(sessionStorage.getItem("userLog"))[globaldata.curNum];
+                userSelectedIndex = thisQueLog.userSelectedIndex;
+                rightSelectedIndex = thisQueLog.rightSelectedIndex;
+                main.analysis();
+                $('.answer li').unbind('click');
+            }
+        }
     },
 
     // 入口
@@ -309,5 +343,6 @@ main = {
         main.resizeImg();
         main.resizeEqSymbol();
         ev.initImg();
+        main.loadCache();
     }
 };

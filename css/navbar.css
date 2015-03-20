@@ -2,26 +2,82 @@ body{
     padding-top:50px;
 }
 
+/*废弃不用的下载条活动样式 start*/
+/*.download_info{*/
+    /*border-bottom: 1px solid #ccc;*/
+    /*height: 72px;*/
+    /*position:relative;*/
+    /*width:100%;*/
+    /*max-width:600px;*/
+    /*position:fixed;*/
+    /*top:-100px;*/
+    /*left:0;*/
+    /*z-index:10000;*/
+    /*background-color: white;*/
+/*}*/
+/*.download_info .icon {*/
+    /*margin: 9px 10px 0 10px;*/
+    /*line-height: 0;*/
+    /*font-size: 0;*/
+/*}*/
+/*.download_info .info_tittle{*/
+    /*display: inline-block;*/
+    /*margin: 7px 0 0 0;*/
+/*}*/
+
+/*.download_info .info_tittle p {*/
+    /*font-size:16px;*/
+/*}*/
+/*.download_info .info_tittle .row3{*/
+    /*line-height: 18px;*/
+    /*font-size: 14px;*/
+/*}*/
+/*.download_info .download{*/
+    /*text-align: center;*/
+    /*display: inline-block;*/
+    /*font-size:16px;*/
+    /*line-height: 30px;*/
+    /*color: #FFFFFF;*/
+    /*padding: 4px 10px;*/
+    /*background-color: #2ac99a;*/
+    /*text-decoration: none;*/
+    /*border-radius:4px;*/
+    /*position: relative;*/
+    /*top: -20px;*/
+    /*left: 10px;*/
+/*}*/
+/*.download_info .download{*/
+    /*cursor:pointer;*/
+/*}*/
+/*.download_info .star-filled{*/
+    /*display: inline-block;*/
+    /*width: 20px;*/
+    /*height: 20px;*/
+    /*background: url('../images/star.png') no-repeat;*/
+    /*background-size:20px 20px;*/
+    /*margin-bottom: -5px;*/
+    /*margin-right: 3px;*/
+/*}*/
+/*废弃不用的下载条活动样式 end*/
+
 .download_info{
     border-bottom: 1px solid #ccc;
     height: 72px;
-    /*position:relative;*/
-    width:100%;
-    max-width:600px;
-    position:fixed;
-    top:-100px;
-    left:0;
-    z-index:10000;
-    background-color: white;
+    position:relative;
+    margin-top:10px;
 }
 .download_info .icon {
     margin: 9px 10px 0 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
     line-height: 0;
     font-size: 0;
 }
 .download_info .info_tittle{
     display: inline-block;
     margin: 7px 0 0 0;
+    margin-left: 75px;
 }
 
 .download_info .info_tittle p {
@@ -33,16 +89,18 @@ body{
 }
 .download_info .download{
     text-align: center;
-    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
     font-size:16px;
     line-height: 30px;
     color: #FFFFFF;
     padding: 4px 10px;
+    margin: 18px 10px 18px 0;
+    height: 30px;
     background-color: #2ac99a;
     text-decoration: none;
     border-radius:4px;
-    float: right;
-    margin: 20px;
 }
 .download_info .download{
     cursor:pointer;

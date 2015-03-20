@@ -170,11 +170,11 @@ var navbar = (function(){
             });
         },
         dwnlEv:function(){
-            if($(".questionType").attr("type") == 4 || $(".questionType").attr("type") == 5){
-                return;
-            }
+//            if($(".questionType").attr("type") == 4 || $(".questionType").attr("type") == 5){
+//                return;
+//            }
             $(".dwnlScler")[0].onscroll = function() {
-                if (document.body.scrollTop == 0) {
+                if (document.body.scrollTop < 5) {
                     if($(".navbar").css("top") == "0" || $(".navbar").css("top") == "0px"){
                         showDwnCard();
                     }
@@ -191,7 +191,7 @@ var navbar = (function(){
             navbar.navBtnEv();
             navbar.maskEv();
             navbar.srlCardEv();
-            navbar.dwnlEv();
+            //avbar.dwnlEv();
         }
     };
 })();

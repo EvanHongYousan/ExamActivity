@@ -63,7 +63,7 @@ body.night_style {
 }
 
 .questions {
-    height:35%;
+    height:40%;
     overflow-y: scroll;
 }
 
@@ -71,7 +71,7 @@ body.night_style {
     box-sizing:border-box;
     -webkit-box-sizing:border-box;
     width:90%;
-    margin:15px auto;
+    margin:0px auto;
     line-height:30px;
     /*text-align: justify;*/
 }

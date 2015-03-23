@@ -165,6 +165,9 @@ body{
     -moz-transition: transform 0.5s; /* Firefox 4 */
     -webkit-transition: transform 0.5s; /* Safari 和 Chrome */
     -o-transition: transform 0.5s; /* Opera */
+    margin-left:5px;
+    position:relative;
+    top:-2px;
 }
 
 .navbar div.navBtn img.hover{

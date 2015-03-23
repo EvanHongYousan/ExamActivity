@@ -388,7 +388,7 @@ main = {
 
         ev.init();
         navbar.init();
-        main.resizeImg();
+        //main.resizeImg();
         ev.initImg();
         main.loadCache();
 

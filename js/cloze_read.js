@@ -284,10 +284,12 @@ main = {
 
     analysis : function() {
         isAnalyse=true;
+        var ansLog = [];
         $(".swipe > .swipe-wrap > div >section").each(function(){
-
+            var index = $(".swipe > .swipe-wrap > div >section").index(this);
             var rightSelectedIndex=$(this).find('.answer ul li.right').index();
             var userSelectedIndex=$(this).find('.active').parents('li').index();
+            ansLog[index] = userSelectedIndex;
 
             var right = null;
 
@@ -326,7 +328,8 @@ main = {
         userLog[globaldata.curNum] = {
             "right" : true,
             "rightScore" : rightScore,
-            "type":"cloze_read"
+            "type":"cloze_read",
+            "ansLog":ansLog
         };
 
         sessionStorage.setItem("userLog",JSON.stringify(userLog));
@@ -371,6 +374,14 @@ main = {
                 }
             }
             /*给答题卡里的序号上色 end*/
+
+            if(userLog[globaldata.curNum] && userLog[globaldata.curNum].right && userLog[globaldata.curNum].ansLog){
+                for(var j = 0; j<userLog[globaldata.curNum].ansLog.length; j++ ){
+                    $(".swipe > .swipe-wrap > div >section").eq(j).find('.answer ul li').eq(userLog[globaldata.curNum].ansLog[j]).find('a').attr("class","active");
+                }
+                $("#submit").click();
+                $("#showAnalysis").click();
+            }
         }
     },
 

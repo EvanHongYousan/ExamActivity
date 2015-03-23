@@ -148,11 +148,11 @@
 </div>
 <div id="contentX">
     <p style="text-align: center;"><img alt="image_gs" src="https://github.com/images/modules/dashboard/bootcamp/octocat_repo.png"></p>
-    <p>做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦做完啦</p>
+    <p>总共做对了<span id="rightAns"></span>题</p>
 </div>
 <div  id="shareDiv">
     <button id="shareBtn">分享出去</button>
-    <span>返回</span>
+    <span id="backBtn">返回</span>
 </div>
 <script src="../js/zepto.min.js"></script>
 <script src="../js/tools.js"></script>
@@ -173,6 +173,24 @@
         $(".download").bind("click", function() {
             window.location.href = downloadUrl;
         });
+        $("#backBtn").click(function(){
+            history.go(-1);
+        });
+
+        function countAns(){
+            var count = 0;
+            var userLog = JSON.parse(sessionStorage.getItem("userLog"));
+            for(var i=1; i<=userLog.length && userLog[i]; i++){
+                if(userLog[i].type == "single_choice" && userLog[i].right){
+                    count++;
+                }
+                if(userLog[i].type == "cloze"  && userLog[i].rightScore){
+                    count += userLog[i].rightScore;
+                }
+            }
+            $('#rightAns').text(count);
+        }
+        countAns();
     })();
 </script>
 </body>

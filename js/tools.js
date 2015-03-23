@@ -101,10 +101,11 @@ var navbar = (function(){
     function showSrlCard(){
         $(".serialCard").animate({
             "top":50+parseInt($(".navbar").css("top"))+"px"
-        },500,'ease-out');
+        },300,'ease-out');
         $(".mask").show().animate({
             "opacity":"0.5"
         });
+        $('.navbar div.navBtn img').addClass('hover');
     }
     function hideCard(){
         $(".serialCard").animate({
@@ -115,6 +116,7 @@ var navbar = (function(){
         },500,'ease-out',function(){
             $(".mask").hide();
         });
+        $('.navbar div.navBtn img').removeClass('hover');
     }
     function showDwnCard(){
         $(".navbar").animate({
@@ -148,7 +150,6 @@ var navbar = (function(){
         },
         nextQueEv:function(){
             $(".navbar .nextQue").click(function(){
-                alert("nextQue");
                 if(globaldata.nextQueURL == ""){
                     location.href = "end.html"
                 }else{

@@ -122,6 +122,16 @@ ev = {
         } else {
             $('.answer li').bind('click', fn);
         }
+    },
+
+    onNativeMessage : function(id, content){
+        switch(id){
+            case "get_available_operation_of_current_page":
+                JSNativeBridge.send("send_available_operation_of_current_page",{"scratch_paper": true});
+                break;
+            default :
+                break;
+        }
     }
 
 };
@@ -344,5 +354,6 @@ main = {
         main.resizeEqSymbol();
         ev.initImg();
         main.loadCache();
+        JSNativeBridge.init(ev.onNativeMessage);
     }
 };

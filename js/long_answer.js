@@ -46,6 +46,7 @@ ev = {
         ev.showAnylysisPClick();
         ev.accordion();
         ev.initDownload();
+        JSNativeBridge.init(ev.onNativeMessage);
     },
 
     initDownload : function() {
@@ -127,7 +128,10 @@ ev = {
     onNativeMessage : function(id, content){
         switch(id){
             case "get_available_operation_of_current_page":
-                JSNativeBridge.send("send_available_operation_of_current_page",{"scratch_paper": true});
+                JSNativeBridge.send("send_available_operation_of_current_page",{
+                    "share":true,
+                    "scratch_paper": true
+                });
                 break;
             default :
                 break;
@@ -285,6 +289,5 @@ main = {
         main.resizeImg();
         ev.initImg();
         main.loadCache();
-        JSNativeBridge.init(ev.onNativeMessage);
     }
 };

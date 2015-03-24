@@ -17,6 +17,9 @@
             display:block;
             height:0;
         }
+        .none{
+            display: none;
+        }
         body{
             background-color:#fff;
             -webkit-user-select: none;
@@ -129,7 +132,7 @@
     </style>
 </head>
 <body>
-<div class="download_info">
+<div class="download_info none">
     <div>
         <img src="../images/app_icon.png" class="icon" width="54" height="54"/>
         <div class="info_tittle">
@@ -158,9 +161,8 @@
 <script src="../js/tools.js"></script>
 <script>
     (function(){
-        if(tools.isMomoClient()){
-            $(".download_info").hide();
-        }else{
+        if(!tools.isMomoClient()){
+            $(".download_info").show();
             var downloadUrl = 'http://dl.ztmomo.com/app/ztmomo/android/028/ztmomo.apk';
             if (tools.getUserAgent() == 'weixin_ios') {
                 downloadUrl = "http://a.app.qq.com/o/simple.jsp?pkgname=com.mainbo.uplus";
@@ -171,11 +173,6 @@
             }
             $(".download").bind("click", function() {
                 window.location.href = downloadUrl;
-            });/*获取2014中考全部真题，赶快下载真题馍馍吧~~*/
-
-            $("#contentX").append('<p style="">获取2014中考全部真题，赶快下载真题馍馍吧~~</p>');
-            $("#shareBtn").text("现在下载").click(function(){
-                $(".download").click();
             });
         }
 

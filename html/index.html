@@ -17,6 +17,9 @@
             display:block;
             height:0;
         }
+        .none{
+            display:none;
+        }
         body{
             background-color:#fff;
             -webkit-user-select: none;
@@ -137,7 +140,7 @@
     </style>
 </head>
 <body>
-    <div class="download_info">
+    <div class="download_info none">
         <div>
             <img src="../images/app_icon.png" class="icon" width="54" height="54"/>
             <div class="info_tittle">
@@ -171,9 +174,8 @@
     <script src="../js/tools.js"></script>
     <script>
         (function(){
-            if(tools.isMomoClient()){
-                $(".download_info").hide();
-            }else{
+            if(!tools.isMomoClient()){
+                $(".download_info").show();
                 var downloadUrl = 'http://dl.ztmomo.com/app/ztmomo/android/028/ztmomo.apk';
                 if (tools.getUserAgent() == 'weixin_ios') {
                     downloadUrl = "http://a.app.qq.com/o/simple.jsp?pkgname=com.mainbo.uplus";

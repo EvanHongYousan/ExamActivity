@@ -55,21 +55,20 @@ ev = {
     },
 
     initDownload : function() {
-        if(tools.isMomoClient()){
-            $(".download_info").hide();
-            return;
+        if(!tools.isMomoClient()){
+            $(".download_info").show();
+            var downloadUrl = 'http://dl.ztmomo.com/app/ztmomo/android/028/ztmomo.apk';
+            if (common.getUserAgent() == 'weixin_ios') {
+                downloadUrl = "http://a.app.qq.com/o/simple.jsp?pkgname=com.mainbo.uplus";
+            } else if (common.getUserAgent() == 'ios') {
+                downloadUrl = 'https://itunes.apple.com/cn/app/zhen-ti-mo-mo/id899192770?l=zh&ls=1&mt=8';
+            } else if (common.getUserAgent() == 'weixin') {
+                $(".download_info").before('<p style="text-align: center;color:#2ac99a;">请在【浏览器中打开】下载</p>');
+            }
+            $(".download").bind("click", function() {
+                window.location.href = downloadUrl;
+            });
         }
-        var downloadUrl = 'http://dl.ztmomo.com/app/ztmomo/android/028/ztmomo.apk';
-        if (common.getUserAgent() == 'weixin_ios') {
-            downloadUrl = "http://a.app.qq.com/o/simple.jsp?pkgname=com.mainbo.uplus";
-        } else if (common.getUserAgent() == 'ios') {
-            downloadUrl = 'https://itunes.apple.com/cn/app/zhen-ti-mo-mo/id899192770?l=zh&ls=1&mt=8';
-        } else if (common.getUserAgent() == 'weixin') {
-            $(".download_info").before('<p style="text-align: center;color:#2ac99a;">请在【浏览器中打开】下载</p>');
-        }
-        $(".download").bind("click", function() {
-            window.location.href = downloadUrl;
-        });
     },
     // 返回图片结果
     initImg : function() {

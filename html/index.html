@@ -193,6 +193,18 @@
             $("#start").click(function(){
                 location.href = startURL;
             });
+            JSNativeBridge.init(function(id, content){
+                switch(id){
+                    case "get_available_operation_of_current_page":
+                        JSNativeBridge.send("send_available_operation_of_current_page",{
+                            "share":true,
+                            "scratch_paper": false
+                        });
+                        break;
+                    default :
+                        break;
+                }
+            });
         })();
     </script>
 </body>

@@ -148,7 +148,7 @@
 </div>
 <div id="contentX">
     <p style="text-align: center;"><img alt="image_gs" src="https://github.com/images/modules/dashboard/bootcamp/octocat_repo.png"></p>
-    <p>总共做对了<span id="rightAns"></span>题</p>
+    <p style="text-align: center;">总共做对了<span id="rightAns">0</span>题</p>
 </div>
 <div  id="shareDiv">
     <button id="shareBtn">分享出去</button>
@@ -171,6 +171,11 @@
             }
             $(".download").bind("click", function() {
                 window.location.href = downloadUrl;
+            });/*获取2014中考全部真题，赶快下载真题馍馍吧~~*/
+
+            $("#contentX").append('<p style="">获取2014中考全部真题，赶快下载真题馍馍吧~~</p>');
+            $("#shareBtn").text("现在下载").click(function(){
+                $(".download").click();
             });
         }
 

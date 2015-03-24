@@ -107,6 +107,9 @@ var navbar = (function(){
         });
         $('.navbar div.navBtn img').addClass('hover');
         $(".serialCard").addClass("hover");
+
+        $(".navBtn").off();
+        $(".navBtn").on('click',hideCard);
     }
     function hideCard(){
 //        $(".serialCard").animate({
@@ -119,6 +122,9 @@ var navbar = (function(){
             $(".mask").hide();
         });
         $('.navbar div.navBtn img').removeClass('hover');
+
+        $(".navBtn").off();
+        $(".navBtn").on('click',showSrlCard);
     }
     function showDwnCard(){
         $(".navbar").animate({
@@ -160,14 +166,10 @@ var navbar = (function(){
             });
         },
         navBtnEv:function(){
-            $(".navBtn").on('click',function(){
-                showSrlCard();
-            });
+            $(".navBtn").on('click',showSrlCard);
         },
         maskEv:function(){
-            $(".mask").on('click',function(){
-                hideCard();
-            });
+            $(".mask").on('click',hideCard);
             $(".mask").on("touchmove",function(){
                 return false;
             });

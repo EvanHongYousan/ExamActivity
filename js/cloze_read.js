@@ -135,11 +135,18 @@ ev = {
     buttonClick:function(){
         $("#submit").click(function(){
             main.analysis();
-            $("article.page, .questions.page").hide();
+            //$("article.page, .questions.page").hide();
             //$(".submitDiv").remove();
-            $(".serialNumStrip").hide();
-            $(".cheerDiv").show();
-            $(".cheerDiv p").html("你答对了"+rightScore+"道题");
+            //$(".serialNumStrip").hide();
+            //$(".cheerDiv").show();
+            $(".submitDiv p").html("你答对了"+rightScore+"道题");
+            $("#submit").text("查看解析").unbind("click").click(function(){
+                mySwipe.slide(0);
+                $(".submitDiv p").remove();
+                $("#submit").text("下一题").unbind("click").click(function(){
+                    location.href = globaldata.nextQueURL || "end.html";
+                });
+            });
         });
         $("#showAnalysis").click(function(){
             $("article.page, .questions.page").show();
@@ -150,7 +157,6 @@ ev = {
             main.focusBlank(0);
             mySwipe.slide(0);
             $("#submit").unbind("click").html("下一题").click(function(){
-                alert("submit");
                 $(".navbar .nextQue").click();
             }).prev().remove();
         });
@@ -347,7 +353,6 @@ main = {
 
         var pageOffset=$("article.page section.content").offset().top;
         var spanOffset=$(".underline > span").eq(index).offset().top;
-        //alert(spanOffset-pageOffset);
         $("article.page").scrollTo({
             endY: spanOffset-pageOffset-15-$(".download_info").height(),        //15 是 .question 带的 15px margin
             duration: 250,
@@ -360,12 +365,14 @@ main = {
 
             /*给答题卡里的序号上色 start*/
             var userLog = JSON.parse(sessionStorage.getItem("userLog"));
-            for(var i = 1 ; i <= userLog.length && userLog[i] && userLog[i].right!=undefined ; i++){
-                if(userLog[i].right){
-                    $(".serialCard span").eq(i-1).addClass("selectright");
-                }
-                if(userLog[i].right == false){
-                    $(".serialCard span").eq(i-1).addClass("selectwrong");
+            for(var i = 1 ; i <= userLog.length ; i++){
+                if(userLog[i] && userLog[i].right!=undefined){
+                    if(userLog[i].right){
+                        $(".serialCard span").eq(i-1).addClass("selectright");
+                    }
+                    if(userLog[i].right == false){
+                        $(".serialCard span").eq(i-1).addClass("selectwrong");
+                    }
                 }
             }
             /*给答题卡里的序号上色 end*/
@@ -375,8 +382,21 @@ main = {
                     $(".swipe > .swipe-wrap > div >section").eq(j).find('.answer ul li').eq(userLog[globaldata.curNum].ansLog[j]).find('a').attr("class","active");
                 }
                 $("#submit").click();
-                $("#showAnalysis").click();
+                $("#submit").click();
             }
+        }
+
+        switch($(".serialCard span").eq(globaldata.curNum-1)[0].className){
+            case "":
+                $(".serialCard span").eq(globaldata.curNum-1).addClass("g_hover");
+                break;
+            case "selectright":
+                $(".serialCard span").eq(globaldata.curNum-1).addClass("r_hover");
+                break;
+            case "selectwrong":
+                $(".serialCard span").eq(globaldata.curNum-1).addClass("w_hover");
+                break;
+            default :break;
         }
     },
 

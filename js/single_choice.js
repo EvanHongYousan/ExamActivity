@@ -327,12 +327,14 @@ main = {
 
             /*给答题卡里的序号上色 start*/
             var userLog = JSON.parse(sessionStorage.getItem("userLog"));
-            for(var i = 1 ; i <= userLog.length && userLog[i] && userLog[i].right!=undefined ; i++){
-                if(userLog[i].right){
-                    $(".serialCard span").eq(i-1).addClass("selectright");
-                }
-                if(userLog[i].right == false){
-                    $(".serialCard span").eq(i-1).addClass("selectwrong");
+            for(var i = 1 ; i <= userLog.length ; i++){
+                if(userLog[i] && userLog[i].right!=undefined){
+                    if(userLog[i].right){
+                        $(".serialCard span").eq(i-1).addClass("selectright");
+                    }
+                    if(userLog[i].right == false){
+                        $(".serialCard span").eq(i-1).addClass("selectwrong");
+                    }
                 }
             }
             /*给答题卡里的序号上色 end*/
@@ -344,6 +346,19 @@ main = {
                 main.analysis();
                 $('.answer li').unbind('click');
             }
+        }
+
+        switch($(".serialCard span").eq(globaldata.curNum-1)[0].className){
+            case "":
+                $(".serialCard span").eq(globaldata.curNum-1).addClass("g_hover");
+                break;
+            case "selectright":
+                $(".serialCard span").eq(globaldata.curNum-1).addClass("r_hover");
+                break;
+            case "selectwrong":
+                $(".serialCard span").eq(globaldata.curNum-1).addClass("w_hover");
+                break;
+            default :break;
         }
     },
 

@@ -61,10 +61,9 @@ body{
 /*废弃不用的下载条活动样式 end*/
 
 .download_info{
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #efefef;
     height: 72px;
     position:relative;
-    margin-top:10px;
 }
 .download_info .icon {
     margin: 9px 10px 0 10px;
@@ -160,32 +159,51 @@ body{
 .navbar div.navBtn img{
     width:10px;
     height:10px;
-    /*transform:rotate(180deg);*/
+
+    -webkit-transition: -webkit-transform 0.5s; /* Safari 和 Chrome */
+    -moz-transition: -moz-transform 0.5s; /* Firefox 4 */
+    -o-transition: -o-transform 0.5s; /* Opera */
     transition: transform 0.5s;
-    -moz-transition: transform 0.5s; /* Firefox 4 */
-    -webkit-transition: transform 0.5s; /* Safari 和 Chrome */
-    -o-transition: transform 0.5s; /* Opera */
+
     margin-left:5px;
     position:relative;
     top:-2px;
 }
 
 .navbar div.navBtn img.hover{
-    transition: transform 0.5s;
-    -moz-transition: transform 0.5s; /* Firefox 4 */
-    -webkit-transition: transform 0.5s; /* Safari 和 Chrome */
-    -o-transition: transform 0.5s; /* Opera */
+    -webkit-transform:rotate(180deg);
+    -moz-transform:rotate(180deg);
+    -o-transform:rotate(180deg);
     transform:rotate(180deg);
 }
 
 .serialCard{
-    max-width:560px;
+    max-width:600px;
     position:fixed;
-    top:-150px;
+    /*top:-150px;*/
+    top:54px;
+
+    -webkit-transition:-webkit-transform 0.5s ease;
+    -moz-transition:-moz-transform 0.5s ease;
+    -o-transition:-o-transform 0.5s ease;
+    transition:transform 0.5s ease;
+
+    -webkit-transform:translate3d(0,-100%, 0);
+    -moz-transform:translate3d(0,-100%, 0);
+    -o-transform:translate3d(0,-100%, 0);
+    transform:translate3d(0,-100%, 0);
+
     padding:20px 0;
     width:100%;
     z-index:10000;
     background-color: white;
+}
+
+.serialCard.hover{
+    -webkit-transform:translate3d(0,-10px, 0);
+    -moz-transform:translate3d(0,-10px, 0);
+    -o-transform:translate3d(0,-10px, 0);
+    transform:translate3d(0,-10px, 0);
 }
 
 .serialCard div{

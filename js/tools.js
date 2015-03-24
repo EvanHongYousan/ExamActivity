@@ -99,18 +99,20 @@ var tools = {
 
 var navbar = (function(){
     function showSrlCard(){
-        $(".serialCard").animate({
-            "top":50+parseInt($(".navbar").css("top"))+"px"
-        },300,'ease-out');
+//        $(".serialCard").animate({
+//            "top":50+parseInt($(".navbar").css("top"))+"px"
+//        },300,'ease-out');
         $(".mask").show().animate({
             "opacity":"0.5"
         });
         $('.navbar div.navBtn img').addClass('hover');
+        $(".serialCard").addClass("hover");
     }
     function hideCard(){
-        $(".serialCard").animate({
-            "top":"-900px"
-        },500,'ease-in');
+//        $(".serialCard").animate({
+//            "top":"-900px"
+//        },500,'ease-in');
+        $(".serialCard").removeClass("hover");
         $(".mask").animate({
             "opacity":"0"
         },500,'ease-out',function(){
@@ -158,12 +160,12 @@ var navbar = (function(){
             });
         },
         navBtnEv:function(){
-            $(".navBtn").click(function(){
+            $(".navBtn").on('click',function(){
                 showSrlCard();
             });
         },
         maskEv:function(){
-            $(".mask").click(function(){
+            $(".mask").on('click',function(){
                 hideCard();
             });
             $(".mask").on("touchmove",function(){

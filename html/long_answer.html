@@ -113,6 +113,16 @@
         ]
     };
 </script>
+
+<!--消除移动端点击事件那300ms的延迟-->
+<script language="javascript" src="../js/fastclick.min.js"></script>
+<script>
+    window.addEventListener('load', function () {
+        FastClick.attach(document.body);
+    }, false);
+</script>
+<!--end-->
+
 <script language="javascript" src="../js/zepto.min.js"></script>
 <script language="javascript" src="../js/tools.js"></script>
 <script language="javascript" src="../js/long_answer.js"></script>

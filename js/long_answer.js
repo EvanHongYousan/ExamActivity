@@ -112,7 +112,7 @@ ev = {
             $(".showAnalysis").addClass("active");
             $(".showAnalysis p").text("题目解析");
 
-            $(".serialCard span").eq(globaldata.curNum-1).addClass("selectright");
+            $(".serialCard span").eq(globaldata.curNum-1).attr('class','selectright r_hover');
             var userLog = sessionStorage.getItem("userLog") ? JSON.parse(sessionStorage.getItem("userLog")) : [] ;
 
             userLog[globaldata.curNum] = {

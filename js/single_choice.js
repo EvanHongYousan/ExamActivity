@@ -290,7 +290,7 @@ main = {
             }
         });
 
-        $(".serialCard span").eq(globaldata.curNum-1).addClass(right?"selectright":"selectwrong");
+        $(".serialCard span").eq(globaldata.curNum-1).attr('class',right?"selectright r_hover":"selectwrong w_hover");
 
         var userLog = sessionStorage.getItem("userLog") ? JSON.parse(sessionStorage.getItem("userLog")) : [] ;
 

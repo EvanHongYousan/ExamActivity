@@ -157,6 +157,7 @@
     <button id="shareBtn">分享出去</button>
     <span id="backBtn">返回</span>
 </div>
+<p id="activityName" style="display: none;">真题馍馍分享</p>
 <script src="../js/zepto.min.js"></script>
 <script src="../js/tools.js"></script>
 <script>
@@ -173,6 +174,20 @@
             }
             $(".download").bind("click", function() {
                 window.location.href = downloadUrl;
+            });
+            $('#shareBtn').text("现在下载").on('click',function(){
+                window.location.href = downloadUrl;
+            });
+            $("#contentX").append('<p>获取2014中考全部真题，赶快下载真题馍馍吧~~</p>');
+        }else{
+            $('#shareBtn').on('click',function(){
+                JSNativeBridge.send("share",{
+                    "content": null,
+                    "title": $("#activityName").text(),
+                    "type": 0,
+                    "image_url": "http://ftp.ztmomo.com/ztmomo/activity/images/momo_greenBG_square.png",
+                    "target_url":location.href.replace("end","index")
+                });
             });
         }
 
@@ -200,6 +215,14 @@
                         "share":true,
                         "scratch_paper": false
                     });
+                    break;
+                case "get_share_content":JSNativeBridge.send("share",{
+                    "content": null,
+                    "title": $("#activityName").text(),
+                    "type": 0,
+                    "image_url": "http://ftp.ztmomo.com/ztmomo/activity/images/momo_greenBG_square.png",
+                    "target_url":location.href.replace("end","index")
+                });
                     break;
                 default :
                     break;

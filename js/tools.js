@@ -99,12 +99,7 @@ var tools = {
 
 var navbar = (function(){
     function showSrlCard(){
-//        $(".serialCard").animate({
-//            "top":50+parseInt($(".navbar").css("top"))+"px"
-//        },300,'ease-out');
-        $(".mask").show().animate({
-            "opacity":"0.5"
-        });
+        $(".mask").addClass("hover");
         $('.navbar div.navBtn img').addClass('hover');
         $(".serialCard").addClass("hover");
 
@@ -112,15 +107,8 @@ var navbar = (function(){
         $(".navBtn").on('click',hideCard);
     }
     function hideCard(){
-//        $(".serialCard").animate({
-//            "top":"-900px"
-//        },500,'ease-in');
+        $(".mask").removeClass("hover");
         $(".serialCard").removeClass("hover");
-        $(".mask").animate({
-            "opacity":"0"
-        },500,'ease-out',function(){
-            $(".mask").hide();
-        });
         $('.navbar div.navBtn img').removeClass('hover');
 
         $(".navBtn").off();

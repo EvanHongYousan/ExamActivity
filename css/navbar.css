@@ -203,7 +203,7 @@ body{
 }
 
 .mask{
-    display:none;
+    /*display:none;*/
     position:fixed;
     top:0;
     left:0;
@@ -212,4 +212,24 @@ body{
     background-color:black;
     opacity:0;
     z-index:1000;
+
+    -webkit-transition:opacity 0.5s ease, -webkit-transform 0.5s ease;
+    -moz-transition:opacity 0.5s ease, -moz-transform 0.5s ease;
+    -o-transition:opacity 0.5s ease, -o-transform 0.5s ease;
+    transition:opacity 0.5s ease, transform 0.5s ease;
+
+    -webkit-transform:translate3d(0, 100%, 0);
+    -moz-transform:translate3d(0, 100%, 0);
+    -o-transform:translate3d(0, 100%, 0);
+    transform:translate3d(0, 100%, 0);
+}
+
+.mask.hover{
+    /*display:block;*/
+    opacity: 0.5;
+
+    -webkit-transform:translate3d(0, 0, 0);
+    -moz-transform:translate3d(0, 0, 0);
+    -o-transform:translate3d(0, 0, 0);
+    transform:translate3d(0, 0, 0);
 }

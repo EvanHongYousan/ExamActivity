@@ -172,7 +172,7 @@ body{
 }
 
 .serialCard span.r_hover{
-    box-shadow:0 0 0 4px #4cae68
+    box-shadow:0 0 0 4px #2ac99a
 }
 .serialCard span.w_hover{
     box-shadow:0 0 0 4px #f05836
@@ -194,7 +194,7 @@ body{
 
 .serialCard span.selectright{
     color:#fff;
-    background-color:#4cae68;
+    background-color:#2ac99a;
 }
 
 .serialCard span.selectwrong{

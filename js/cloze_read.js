@@ -119,6 +119,19 @@ ev = {
             }
             ;
             main.makeResult($(this), ev);
+
+            var userLog = sessionStorage.getItem("userLog") ? JSON.parse(sessionStorage.getItem("userLog")) : [] ;
+            if(!userLog[globaldata.curNum]){
+                userLog[globaldata.curNum] = {};
+            }
+            var userIndex = $(this).parent().find("li").index(this);
+            var pageIndex = $(".swipe > .swipe-wrap > div >section").index($(this).parents("section.content").parent());
+            if(!userLog[globaldata.curNum].selectLog){
+                userLog[globaldata.curNum].selectLog = [];
+            }
+            userLog[globaldata.curNum].selectLog[pageIndex] = userIndex;
+            sessionStorage.setItem("userLog",JSON.stringify(userLog));
+
             setTimeout(function(){
                 mySwipe.next();
             },500);
@@ -376,7 +389,19 @@ main = {
             }
             /*给答题卡里的序号上色 end*/
 
+            if(userLog[globaldata.curNum] && userLog[globaldata.curNum].selectLog){
+                for(var k = 0; k<userLog[globaldata.curNum].selectLog.length; k++){
+                    if(userLog[globaldata.curNum].selectLog[0] == -1){
+                        continue;
+                    }
+                    $(".swipe > .swipe-wrap > div >section").eq(k).find('.answer ul li').eq(userLog[globaldata.curNum].selectLog[k]).find('a').attr("class","active");
+                    $(".underline > span").eq(k).attr("class","finished activeMark");
+                }
+            }
+
+
             if(userLog[globaldata.curNum] && userLog[globaldata.curNum].right && userLog[globaldata.curNum].ansLog){
+                $(".active").removeClass(".active");
                 for(var j = 0; j<userLog[globaldata.curNum].ansLog.length; j++ ){
                     $(".swipe > .swipe-wrap > div >section").eq(j).find('.answer ul li').eq(userLog[globaldata.curNum].ansLog[j]).find('a').attr("class","active");
                 }

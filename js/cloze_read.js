@@ -391,7 +391,7 @@ main = {
 
             if(userLog[globaldata.curNum] && userLog[globaldata.curNum].selectLog){
                 for(var k = 0; k<userLog[globaldata.curNum].selectLog.length; k++){
-                    if(userLog[globaldata.curNum].selectLog[0] == -1){
+                    if(userLog[globaldata.curNum].selectLog[k] == -1 || userLog[globaldata.curNum].selectLog[k] == null){
                         continue;
                     }
                     $(".swipe > .swipe-wrap > div >section").eq(k).find('.answer ul li').eq(userLog[globaldata.curNum].selectLog[k]).find('a').attr("class","active");

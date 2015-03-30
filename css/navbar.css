@@ -85,7 +85,8 @@ body{
 .navbar .preQue, .navbar .nextQue{
     border:1px solid #2ac99a;
     border-radius: 5px;
-    padding:5px;
+    padding:5px 10px;
+    font-size:12px;
 }
 
 .navbar .preQue{

@@ -215,9 +215,9 @@ body{
     opacity:0;
     z-index:1000;
 
-    -webkit-transition:opacity 0.5s ease;
-    -moz-transition:opacity 0.5s ease;
-    -o-transition:opacity 0.5s ease;
+    -webkit-transition:-webkit-opacity 0.5s ease;
+    -moz-transition:-moz-opacity 0.5s ease;
+    -o-transition:-o-opacity 0.5s ease;
     transition:opacity 0.5s ease;
 
     -webkit-transform:translate3d(0, 100%, 0);
@@ -227,6 +227,9 @@ body{
 }
 
 .mask.hover{
+    -webkit-opacity: 0.5;
+    -moz-opacity: 0.5;
+    -o-opacity: 0.5;
     opacity: 0.5;
 
     -webkit-transform:translate3d(0, 0, 0);

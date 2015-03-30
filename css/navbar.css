@@ -67,7 +67,6 @@ body{
     position:fixed !important;
     top:0;
     z-index:12000;
-    text-align: center;
 }
 
 .navbar span.curQueNum{
@@ -76,10 +75,13 @@ body{
 
 .navbar div.navBtn {
     display:inline-block;
-    /*position:fixed;*/
-    /*top:10px;*/
-    /*left:50%;*/
-    /*transform:translateX(-50%);*/
+    position:fixed;
+    top:10px;
+    left:50%;
+    -webkit-transform:translateX(-50%);
+    -moz-transform:translateX(-50%);
+    -o-transform:translateX(-50%);
+    transform:translateX(-50%);
 }
 
 .navbar .preQue, .navbar .nextQue{

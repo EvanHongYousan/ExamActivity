@@ -374,3 +374,6 @@ main = {
         main.loadCache();
     }
 };
+
+
+main.load();

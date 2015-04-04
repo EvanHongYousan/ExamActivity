@@ -99,7 +99,7 @@ var tools = {
 
 var navbar = (function(){
     function showSrlCard(){
-        $(".mask").addClass("hover");
+        $(".mask").show();
         $('.navbar div.navBtn img').addClass('hover');
         $(".serialCard").addClass("hover");
 
@@ -107,7 +107,7 @@ var navbar = (function(){
         $(".navBtn").on('click',hideCard);
     }
     function hideCard(){
-        $(".mask").removeClass("hover");
+        $(".mask").hide();
         $(".serialCard").removeClass("hover");
         $('.navbar div.navBtn img').removeClass('hover');
 

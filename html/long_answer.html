@@ -5,8 +5,7 @@
     <title>真题馍馍分享</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
-    <link type="text/css" rel="stylesheet" href="../css/long_answer.css" />
-    <link type="text/css" rel="stylesheet" href="../css/navbar.css" />
+    <script src="../js/zepto.min.js"></script>
 
 </head>
 <body class="dwnlScler">
@@ -124,11 +123,17 @@
 </script>
 <!--end-->
 
-<script language="javascript" src="../js/zepto.min.js"></script>
-<script language="javascript" src="../js/tools.js"></script>
-<script language="javascript" src="../js/long_answer.js"></script>
+<script language="javascript" src="../js/sea.js"></script>
 <script>
-    main.load();
+    var dependencies = [
+                "../css/long_answer.css"+"?t="+Math.random(),
+                "../css/math.css"+"?t="+Math.random(),
+                "../css/topic_gz.css"+"?t="+Math.random(),
+                "../css/navbar.css"+"?t="+Math.random(),
+                "../js/tools.js"+"?t="+Math.random(),
+                "../js/long_answer.js"+"?t="+Math.random()
+    ];
+    seajs.use(dependencies);
 </script>
 </body>
 </html>
